@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Framely · Meeting templates with the words to say</title>
-<meta name="description" content="Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step. For the specialist who was just handed the meeting.">
+<title>Framely · Ready-to-run meeting templates with the words to say</title>
+<meta name="description" content="Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Geomanist Bold pending license: Outfit 600/700 is a TEMPORARY stand-in for Geomanist Bold. -->
@@ -22,7 +22,6 @@
   --body:"Noto Sans",system-ui,sans-serif;
   --pad:clamp(20px,4vw,56px);
   --gap:clamp(12px,1.6vw,24px);
-  --navh:68px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -33,197 +32,342 @@ a{color:inherit}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
-h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.04em;margin:0}
-h2{font-size:clamp(36px,5.2vw,80px);line-height:.98}
-p{margin:0}
-.pending{display:inline-block;font:500 .78em/1.2 var(--body);color:var(--d2);border:1px dashed var(--d2);padding:.1em .45em;margin:0 .15em;vertical-align:.08em;white-space:nowrap}
+h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.025em;margin:0}
+p{margin:0 0 1em}
+.meta{font:500 11px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.pending{display:inline-block;font:500 .78em/1.2 var(--body);letter-spacing:.02em;color:var(--d2);border:1px dashed var(--d2);padding:.1em .45em;margin:0 .15em;vertical-align:.08em;white-space:nowrap}
 .on-dark .pending{color:var(--t1);border-color:var(--l1)}
-.sec{padding:clamp(96px,13vw,200px) 0}
-.rule{grid-column:1/-1;border-top:1px solid currentColor;margin-bottom:clamp(40px,6vw,88px)}
 
-/* nav */
+/* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:30;background:var(--l2);border-bottom:1px solid var(--d1)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--navh)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
 .nav .logo img{height:26px;width:auto}
-.btn{display:inline-flex;align-items:center;gap:.6em;font:600 16px/1 "Outfit",var(--body);text-decoration:none;background:var(--cta);color:var(--d1);border:1px solid var(--d1);padding:15px 22px;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer}
+.nav ul{display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);list-style:none;margin:0;padding:0;font:400 15px/1 var(--body)}
+.nav ul a{text-decoration:none}
+.nav ul a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:600 16px/1 "Outfit",var(--body);letter-spacing:.005em;text-decoration:none;background:var(--cta);color:var(--d1);border:1px solid var(--d1);padding:15px 22px;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer}
 .btn:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--d1)}
 .btn.sm{padding:10px 14px;font-size:14px}
 .btn.lg{padding:20px 28px;font-size:18px}
 
-/* template components */
+/* ---------- section head (numbered, prescription form) ---------- */
+section{position:relative}
+.sec{padding:clamp(72px,10vw,150px) 0}
+.sh{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);border-top:1px solid currentColor;padding-top:14px;margin-bottom:clamp(40px,6vw,88px)}
+.sh .no{grid-column:1/2;font:700 15px/1 var(--head)}
+.sh .lab{grid-column:2/10;font:400 15px/1.2 var(--sub)}
+.sh .rx{grid-column:10/13;text-align:right}
+.on-dark{background:var(--d1);color:var(--l2)}
+
+/* ---------- template components (specimens) ---------- */
 .tbar{display:grid;grid-template-columns:1fr auto;border:1px solid var(--d1);background:var(--l2);color:var(--d1)}
 .tbar .tt{padding:16px 20px;min-width:0}
 .tbar .tt b{display:block;font:700 clamp(18px,1.6vw,22px)/1.15 var(--head);letter-spacing:-.01em}
 .tbar .tt span{display:block;font:400 clamp(14px,1.2vw,16px)/1.35 var(--sub);margin-top:4px}
 .tbar .tc{border-left:1px solid var(--d1);background:var(--w);padding:12px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;font:400 13px/1 var(--body);white-space:nowrap}
 .tbar .tc i{display:inline-grid;place-items:center;width:20px;height:20px;background:var(--l1);color:var(--d1);font-size:13px;margin-right:8px;vertical-align:middle}
+.tbar.dark .tt{background:var(--d1);color:var(--l2)}
+.tbar.mid .tt{background:var(--l1);color:var(--d1)}
 .tile{display:inline-grid;place-items:center;width:30px;height:30px;flex:none;background:var(--d2);color:var(--l2);font-size:17px}
 .tile.ol{background:transparent;color:var(--d1);border:1px solid var(--d1)}
+.tile.blue{background:var(--cta);color:var(--d1)}
+.tile.lt{background:var(--t1);color:var(--d1)}
+.alabel{display:flex;align-items:center;gap:12px;font:400 15px/1.3 var(--body)}
+.field{border:1px dashed var(--l1);padding:14px 16px;color:var(--d2);font:300 14px/1.5 var(--body);background:transparent}
+.field.phd{color:var(--l1)}
 .hint{display:flex;gap:14px;align-items:flex-start}
 .hint .tile{background:var(--cta);color:var(--d1);width:34px;height:34px;font-size:20px}
-.hint p{background:var(--cta);padding:12px 16px;font:400 15px/1.45 var(--body);color:var(--d1)}
+.hint p{margin:0;background:var(--cta);padding:12px 16px;font:400 15px/1.45 var(--body);color:var(--d1)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-block;font:400 13px/1 var(--sub);padding:6px 10px;border:1px solid var(--d1)}
+.chip{display:inline-block;font:400 13px/1 var(--sub);padding:6px 10px;border:1px solid var(--d1);color:var(--d1);background:transparent}
 .chip.f{background:var(--d1);color:var(--l2)}
+.chip.f2{background:var(--d2);border-color:var(--d2);color:var(--l2)}
 .chip.t{background:var(--t1);border-color:var(--t1)}
 .chip.o{border-color:var(--l1);color:var(--d2)}
 .chip.a{background:var(--cta);border-color:var(--cta)}
-.tfoot{display:flex;justify-content:space-between;gap:12px;font:500 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2);padding-top:12px;border-top:1px solid var(--t1)}
+.tfoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:500 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2);padding:12px 0 0;border-top:1px solid var(--t1)}
 .sheet{background:var(--w);border:1px solid var(--d1);box-shadow:10px 10px 0 var(--t1)}
 .miro{background-color:var(--t2);background-image:linear-gradient(var(--t1) 1px,transparent 1px),linear-gradient(90deg,var(--t1) 1px,transparent 1px);background-size:32px 32px}
 
-/* 1 hero */
-.hero{min-height:calc(100svh - var(--navh));display:flex;align-items:center;padding:clamp(56px,8vw,120px) 0}
-.hero .grid{width:100%}
-.hero h1{grid-column:1/12;font-size:clamp(46px,8.1vw,128px);line-height:.94;letter-spacing:-.045em}
+/* ---------- 01 hero ---------- */
+.hero{padding:clamp(28px,4vw,56px) 0 clamp(72px,9vw,130px)}
+.rxform{grid-column:1/-1;display:grid;grid-template-columns:auto 1.3fr 1fr 1fr;border:1px solid var(--d1);background:var(--t2)}
+.rxform>div{padding:14px 18px;border-left:1px solid var(--d1);min-width:0}
+.rxform>div:first-child{border-left:0;display:flex;align-items:center;gap:12px;padding-right:22px}
+.rxform .rxg{font:700 30px/1 var(--head);letter-spacing:-.018em}
+.rxform .meta{display:block;color:var(--d2);margin-bottom:6px}
+.rxform .v{font:400 16px/1.3 var(--sub)}
+.hero h1{grid-column:1/12;font-size:clamp(46px,8.1vw,128px);line-height:.94;letter-spacing:-.018em;margin:clamp(48px,7vw,104px) 0 clamp(44px,6vw,88px)}
 .hero h1 .l2{display:block;color:var(--d2)}
-.hero .lede{grid-column:7/13;margin-top:clamp(48px,6vw,88px);padding-top:20px;border-top:1px solid var(--d1)}
+.hero .spec{grid-column:1/6;align-self:start}
+.hero .spec .cap{display:flex;justify-content:space-between;margin-bottom:10px;color:var(--d2)}
+.hero .spec .tbar .tt span.field{border-color:var(--l1);padding:4px 8px;margin-top:8px;color:var(--l1);font:300 14px/1.3 var(--body)}
+.hero .lede{grid-column:7/13}
 .hero .lede p{font:300 clamp(18px,1.55vw,22px)/1.5 var(--body);margin-bottom:28px}
-.hero .note{display:block;margin-top:14px;font:400 14px/1.4 var(--body);color:var(--d2)}
+.hero .lede .note{display:block;margin-top:14px;font:400 14px/1.4 var(--body);color:var(--d2)}
+.micro{list-style:none;margin:28px 0 0;padding:16px 0 0;border-top:1px solid var(--d1);display:flex;flex-wrap:wrap;gap:8px 22px;font:400 14px/1.3 var(--body)}
+.micro li{display:flex;align-items:center;gap:8px}
+.micro i{font-size:16px}
+.directions{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--gap);margin-top:clamp(64px,8vw,120px);border-top:1px solid var(--d1)}
+.directions .dh{grid-column:1/-1;padding:12px 0 0;color:var(--d2)}
+.directions div.d{padding:22px 0 0;border-right:1px solid var(--t1);padding-right:20px}
+.directions div.d:last-child{border-right:0}
+.directions .n{font:700 15px/1 var(--head);display:block;margin-bottom:14px}
+.directions .t{font:700 clamp(22px,2.3vw,34px)/1.05 var(--head);letter-spacing:-.025em}
 
-/* 2 reduction */
-.demo{padding-top:clamp(40px,6vw,80px)}
-.demo .intro{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
-.demo .intro p{font:400 clamp(17px,1.4vw,20px)/1.45 var(--sub);max-width:340px}
+/* ---------- 02 reduction ---------- */
+.demo{padding-top:clamp(72px,9vw,130px)}
+.demo .intro{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);margin-bottom:40px}
+.demo .intro h2{grid-column:1/9;font-size:clamp(36px,5.2vw,80px);line-height:.98;letter-spacing:-.018em}
+.demo .intro p{grid-column:9/13;align-self:end;font:400 clamp(17px,1.4vw,20px)/1.45 var(--sub);margin:0}
+.demo .intro p b{font-weight:400;border-bottom:1px solid var(--d1)}
+/* static fallback: all steps visible (no JS / reduced motion) */
 .doses{list-style:none;margin:0;padding:0;border-top:1px solid var(--d1)}
 .doses li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding:28px 0;border-bottom:1px solid var(--t1)}
-.doses .dl{grid-column:1/3;font:700 15px/1.2 var(--head)}
-.doses .tx{grid-column:3/13}
+.doses .dl{grid-column:1/4}
+.doses .dl b{display:block;font:700 15px/1 var(--head);margin-bottom:8px}
+.doses .dl span{font:400 15px/1.3 var(--sub);color:var(--d2)}
+.doses .tx{grid-column:4/13;margin:0}
 .doses li[data-k="mess"] .tx{font:300 18px/1.55 var(--body);color:var(--d2)}
 .doses li[data-k="40"] .tx{font:700 clamp(22px,2.2vw,30px)/1.15 var(--head);letter-spacing:-.02em}
-.doses li[data-k="20"] .tx{font:700 clamp(28px,3.2vw,46px)/1.05 var(--head);letter-spacing:-.03em}
-.doses li[data-k="10"] .tx{font:700 clamp(34px,4.6vw,68px)/1 var(--head);letter-spacing:-.035em}
-.doses li[data-k="5"] .tx{font:700 clamp(40px,7vw,108px)/.95 var(--head);letter-spacing:-.045em}
+.doses li[data-k="20"] .tx{font:700 clamp(28px,3.2vw,46px)/1.05 var(--head);letter-spacing:-.018em}
+.doses li[data-k="10"] .tx{font:700 clamp(34px,4.6vw,68px)/1 var(--head);letter-spacing:-.018em}
+.doses li[data-k="5"] .tx{font:700 clamp(40px,7vw,108px)/.95 var(--head);letter-spacing:-.018em}
 .demo .after{grid-column:1/-1;margin-top:40px}
 .track{display:none}
 html.live .doses-wrap{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 html.live .track{display:block;height:520vh;position:relative}
 html.live .demo .after{display:none}
-.stage{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));height:calc(100svh - var(--navh));display:flex;flex-direction:column;border-top:1px solid var(--d1);border-bottom:1px solid var(--d1)}
+.stage{position:sticky;top:68px;height:calc(100vh - 68px);height:calc(100svh - 68px);display:flex;flex-direction:column;border-top:1px solid var(--d1);border-bottom:1px solid var(--d1)}
 .stage>.wrap{width:100%}
 .stage-head{padding-top:18px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
-.stage-head .tbar{grid-template-columns:auto auto}
-.stage-head .tc{min-width:150px}
+.stage-head .tbar{grid-template-columns:auto auto auto}
+.stage-head .tbar{background:var(--l2)}
+.stage-head .tc.wc{min-width:150px}
+.stage-head .tc b{font:700 22px/1 var(--head);letter-spacing:-.02em;margin-right:4px}
 .stage-head .tc .cnt{display:flex;align-items:baseline;gap:4px}
-.stage-head .tc b{font:700 22px/1 var(--head);letter-spacing:-.02em}
 .stage-head .tc small{font:400 12px/1 var(--body);color:var(--d2)}
-.stage-body{flex:1;min-height:0}
+.stage-body{flex:1;min-height:0;position:relative}
 .stage-body .wrap{height:100%;display:flex;align-items:center}
 .words{width:100%;color:var(--d1);hyphens:none;overflow-wrap:normal;word-break:normal}
 .words .w{display:inline-block;position:relative;will-change:transform}
-.words.mess{font-family:var(--body);font-weight:300;color:var(--d2)}
+.words.mess{font-family:var(--body);font-weight:300;color:var(--d2);letter-spacing:0}
 .words.big{font-family:var(--head);font-weight:700}
 .words .w::after{content:"";position:absolute;left:-.04em;right:-.04em;top:56%;height:max(2px,.07em);background:var(--d1);transform:scaleX(0);transform-origin:left center;transition:transform .32s cubic-bezier(.6,0,.2,1)}
 .words .w.cut{color:var(--l1);transition:color .25s ease,opacity .2s ease .5s;opacity:0}
 .words .w.cut::after{transform:scaleX(1)}
+.words .w.kept{color:var(--d1)}
 .stage-foot{padding-bottom:18px}
 .rail{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--d1)}
-.rail button{all:unset;cursor:pointer;padding:12px 12px 0 0;position:relative;color:var(--l1);font:700 clamp(18px,2vw,28px)/1 var(--head);letter-spacing:-.02em;transition:color .3s}
+.rail button{all:unset;cursor:pointer;padding:12px 12px 0 0;display:flex;flex-direction:column;gap:6px;position:relative;color:var(--l1);transition:color .3s}
 .rail button::before{content:"";position:absolute;top:-1px;left:0;right:8px;height:3px;background:var(--d1);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
 .rail button.on,.rail button.done{color:var(--d1)}
 .rail button.on::before,.rail button.done::before{transform:scaleX(1)}
-.stage .hint{max-width:500px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.rail button:focus-visible{outline:2px solid var(--d1);outline-offset:2px}
+.rail .rn{font:700 clamp(18px,2vw,28px)/1 var(--head);letter-spacing:-.02em}
+.rail .rl{font:400 12px/1.2 var(--body);color:var(--d2)}
+.stage .hint{max-width:500px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
 .stage.final .hint{opacity:1;transform:none}
+.stage .scrollcue{position:absolute;left:var(--pad);bottom:14px;font:400 13px/1 var(--body);color:var(--d2);display:flex;gap:8px;align-items:center;transition:opacity .3s}
+.stage.moved .scrollcue{opacity:0}
 
-/* 3 templates */
-.menu h2{grid-column:1/9;grid-row:2;margin-bottom:clamp(40px,5vw,72px)}
-.plist{grid-column:1/6;grid-row:3;list-style:none;margin:0;padding:0;border-top:1px solid var(--d1);align-self:start}
+/* ---------- 03 pain ---------- */
+.pain .q{grid-column:1/6;font:700 clamp(30px,3.6vw,54px)/1.02 var(--head);letter-spacing:-.018em;margin:0}
+.pain .q .who{display:block;font:400 15px/1.3 var(--sub);letter-spacing:0;margin-bottom:18px;color:var(--d2)}
+.pain .body{grid-column:7/13;font:300 clamp(18px,1.45vw,21px)/1.6 var(--body)}
+.pain .empty{grid-column:1/6;margin-top:36px}
+.pain .empty .field{height:150px;display:flex;align-items:flex-end;justify-content:space-between;background:var(--t2)}
+.pain .shape{grid-column:1/-1;margin-top:clamp(64px,8vw,120px);padding-top:28px;border-top:1px solid var(--d1);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.pain .shape h3{grid-column:1/9;font-size:clamp(34px,4.8vw,72px);line-height:1;letter-spacing:-.018em}
+.pain .shape p{grid-column:9/13;align-self:end;font:300 18px/1.55 var(--body);margin:0}
+
+/* ---------- 04 problem menu ---------- */
+.menu h2{grid-column:1/9;font-size:clamp(36px,5.2vw,80px);line-height:.98;letter-spacing:-.018em;margin-bottom:clamp(40px,5vw,72px)}
+.plist{grid-column:1/6;list-style:none;margin:0;padding:0;border-top:1px solid var(--d1)}
 .plist li{border-bottom:1px solid var(--d1)}
-.plist button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;padding:22px 12px 22px 0;transition:background .2s,padding .2s}
-.plist .tile{grid-row:1/3;margin-top:2px;background:transparent;color:var(--d1);border:1px solid var(--d1)}
-.plist .pq{font:700 clamp(19px,1.7vw,25px)/1.2 var(--head);letter-spacing:-.015em}
-.plist .pt{font:400 14px/1.3 var(--body);color:var(--d2)}
+.plist button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;padding:18px 12px 18px 0;transition:background .2s,padding .2s}
+.plist button .tile{grid-row:1/3;margin-top:2px;background:transparent;color:var(--d1);border:1px solid var(--d1)}
+.plist button .pq{font:700 clamp(18px,1.6vw,23px)/1.2 var(--head);letter-spacing:-.015em}
+.plist button .pt{font:400 14px/1.3 var(--body);color:var(--d2)}
+.plist button .pt em{font-style:normal;border:1px solid var(--l1);padding:1px 6px;margin-left:6px;font-size:12px}
 .plist button:hover{background:var(--t2)}
 .plist button[aria-pressed="true"]{background:var(--d1);color:var(--l2);padding-left:14px}
 .plist button[aria-pressed="true"] .pt{color:var(--t1)}
 .plist button[aria-pressed="true"] .tile{background:var(--cta);border-color:var(--cta);color:var(--d1)}
 .plist button:focus-visible{outline:2px solid var(--d1);outline-offset:2px}
-.soon{grid-column:1/6;grid-row:4;margin-top:22px;font:400 14px/1.5 var(--body);color:var(--d2)}
-.previews{grid-column:7/13;grid-row:3/6;align-self:start}
+.previews{grid-column:7/13;align-self:start;position:sticky;top:100px}
 .pv{padding:22px}
 .pv+.pv{margin-top:32px}
 html.js .pv[hidden]{display:none}
-.pv .tbar{margin-bottom:20px}
-.steps8{list-style:none;margin:0 0 20px;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.steps8 li{counter-increment:s;border:1px solid var(--d1);padding:8px;font:400 12px/1.25 var(--body);min-height:56px;display:flex;flex-direction:column;gap:4px}
+.pv .tbar{margin-bottom:22px}
+.pv .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--t1);font:400 14px/1.5 var(--body)}
+.pv .row>.k{font:700 14px/1.3 var(--head)}
+.steps8{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.steps8 li{counter-increment:s;border:1px solid var(--d1);padding:8px;font:400 12px/1.25 var(--body);min-height:58px;display:flex;flex-direction:column;gap:4px}
 .steps8 li::before{content:"0" counter(s);font:700 12px/1 var(--head)}
 .steps8 li.hl{background:var(--d1);color:var(--l2)}
-.pv .lbl{font:700 14px/1.3 var(--head);margin-bottom:10px;display:block}
-.pv .chips{margin-bottom:10px}
-.pv .sm{font:400 14px/1.4 var(--body);color:var(--d2);margin-bottom:20px}
+.pv .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pv .two .field{min-height:72px}
+.pv .alabel{margin:6px 0 8px;font-size:13px}
+.pv .alabel .tile{width:24px;height:24px;font-size:14px}
+.pv.soon{background:var(--t2);box-shadow:10px 10px 0 var(--t1)}
+.pv.soon .stamp{display:inline-block;border:1px solid var(--d1);padding:8px 12px;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;transform:rotate(-3deg);margin:12px 0 18px}
+.pv .tfoot{margin-top:18px}
 
-/* 4 why not AI */
-.ai h2{grid-column:1/10;font-size:clamp(40px,6.4vw,100px);line-height:.95;letter-spacing:-.045em;color:var(--l2)}
-.ai .tm{grid-column:1/7;margin-top:clamp(56px,7vw,110px);font:700 clamp(96px,15vw,230px)/.85 var(--head);letter-spacing:-.06em;color:var(--cta)}
-.ai .txt{grid-column:8/13;align-self:end;margin-top:clamp(56px,7vw,110px);padding-top:18px;border-top:1px solid var(--l1);font:300 clamp(18px,1.45vw,21px)/1.6 var(--body);color:var(--l2)}
-.on-dark{background:var(--d1);color:var(--l2)}
+/* ---------- 05 anatomy ---------- */
+.anat h2{grid-column:1/10;font-size:clamp(36px,5.2vw,80px);line-height:.98;letter-spacing:-.018em}
+.anat .h2b{grid-column:1/10;font:400 clamp(20px,2vw,28px)/1.3 var(--sub);margin:16px 0 clamp(40px,5vw,72px);color:var(--d2)}
+.anat .board{grid-column:1/-1;padding:clamp(18px,3vw,44px)}
+.cells{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.cell{background:var(--w);border:1px solid var(--d1)}
+.cell .ch{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--d1);background:var(--l2)}
+.cell .ch b{font:700 clamp(18px,1.6vw,22px)/1.15 var(--head)}
+.cell .ch .no{margin-left:auto;font:700 13px/1 var(--head);color:var(--d2)}
+.cell .cb{padding:20px 22px 24px;font:400 15px/1.55 var(--body)}
+.cell .cb .say{font:400 clamp(19px,1.7vw,24px)/1.35 var(--sub);color:var(--d1);margin:0}
+.cell ul{list-style:none;margin:0;padding:0}
+.cell li{display:flex;gap:12px;padding:6px 0;align-items:flex-start}
+.cell li .tile{width:22px;height:22px;font-size:13px;margin-top:2px}
+.cell .if{text-decoration:underline;text-underline-offset:3px;display:block;margin-bottom:4px}
+.cell.c1 .ch{background:var(--d1);color:var(--l2)}
+.cell.c1 .ch .no{color:var(--t1)}
+.cell.c4 .ch{background:var(--l1)}
+.anat .board .tfoot{margin-top:24px}
 
-/* 5 price */
-.pcard{grid-column:4/10}
+/* ---------- 06 why not AI (dark) ---------- */
+.ai .sh{border-color:var(--l2)}
+.ai h2{grid-column:1/10;font-size:clamp(40px,6.4vw,100px);line-height:.95;letter-spacing:-.018em;color:var(--l2)}
+.ai .clock{grid-column:1/6;margin-top:clamp(56px,7vw,110px);border-top:1px solid var(--l1);padding-top:14px}
+.ai .clock .meta{color:var(--t1)}
+.ai .clock .tm{font:700 clamp(84px,13vw,200px)/.9 var(--head);letter-spacing:-.018em;color:var(--cta);margin-top:12px;display:block}
+.ai .txt{grid-column:7/13;margin-top:clamp(56px,7vw,110px);font:300 clamp(18px,1.45vw,21px)/1.6 var(--body);color:var(--l2)}
+.ai .txt p:first-child{border-top:1px solid var(--l1);padding-top:18px}
+.ai .txt strong{font-weight:500;color:var(--w)}
+
+/* ---------- 07 outcome ---------- */
+.out h2{grid-column:1/10;font-size:clamp(36px,5.6vw,88px);line-height:.96;letter-spacing:-.018em;margin-bottom:clamp(48px,6vw,90px)}
+.outs{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--gap);list-style:none;margin:0;padding:0}
+.outs li{border-top:3px solid var(--d1);padding-top:20px}
+.outs .tile{margin-bottom:22px}
+.outs p{font:400 clamp(20px,1.9vw,27px)/1.25 var(--sub);margin:0}
+
+/* ---------- 08 who it's not for (dark) ---------- */
+.notfor .sh{border-color:var(--l2)}
+.contra{grid-column:1/-1;list-style:none;margin:0 0 clamp(64px,8vw,120px);padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--gap)}
+.contra li{border-top:1px solid var(--l1);padding-top:18px;display:grid;grid-template-columns:auto 1fr;gap:14px;font:300 18px/1.5 var(--body);color:var(--t1)}
+.contra li .tile{background:transparent;border:1px solid var(--l1);color:var(--l2)}
+.contra li b{display:block;font:700 clamp(22px,2.2vw,30px)/1.1 var(--head);letter-spacing:-.02em;color:var(--l2);margin-bottom:6px;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--l1)}
+.notfor .for{grid-column:1/-1;font:700 clamp(44px,8vw,128px)/.92 var(--head);letter-spacing:-.018em;color:var(--l2);margin:0}
+.notfor .for .lb{display:block;font:400 15px/1.3 var(--sub);letter-spacing:0;color:var(--cta);margin-bottom:18px}
+
+/* ---------- 09 price ---------- */
+.price h2{grid-column:1/6;font-size:clamp(36px,5.2vw,80px);line-height:.98;letter-spacing:-.018em}
+.price .side{grid-column:1/6;margin-top:24px;font:300 18px/1.55 var(--body)}
+.pcard{grid-column:7/13;grid-row:2/5;padding:0;align-self:start}
+.price h2{grid-row:2}.price .side{grid-row:3}
 .pcard .tbar{border:0;border-bottom:1px solid var(--d1)}
-.pcard .amt{padding:32px 24px 12px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
-.pcard .big{font:700 clamp(104px,12vw,180px)/.8 var(--head);letter-spacing:-.06em}
-.pcard .was{font:400 15px/1.5 var(--body);padding-bottom:6px}
-.pcard ul{list-style:none;margin:20px 24px 0;padding:0}
+.pcard .tc{min-width:120px}
+.pcard .amt{padding:28px 24px 8px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.pcard .amt .big{font:700 clamp(96px,11vw,168px)/.8 var(--head);letter-spacing:-.018em}
+.pcard .amt .was{font:400 15px/1.45 var(--body);padding-bottom:6px}
+.pcard .amt .was s{text-decoration-thickness:1px}
+.pcard ul{list-style:none;margin:16px 24px 0;padding:0}
 .pcard li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--t1);font:400 15px/1.45 var(--body)}
 .pcard li .tile{width:22px;height:22px;font-size:13px;margin-top:1px}
-.pcard .buy{padding:24px}
+.pcard .buy{padding:24px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .pcard .buy .btn{width:100%;justify-content:center}
+.pcard .buy small{font:400 13px/1.45 var(--body);color:var(--d2)}
 .pcard .tfoot{margin:0 24px;padding-bottom:16px}
 
-/* 6 for */
-.forwho .line{grid-column:1/-1;font:700 clamp(40px,7vw,112px)/.94 var(--head);letter-spacing:-.05em}
-.forwho .not{grid-column:1/-1;margin-top:28px;font:400 clamp(18px,1.6vw,22px)/1.4 var(--sub);color:var(--d2)}
-
-/* 7 faq */
-.faq h2{grid-column:1/5}
-.qs{grid-column:6/13;border-top:1px solid var(--d1)}
+/* ---------- 10 faq ---------- */
+.faq h2{grid-column:1/5;font-size:clamp(36px,4.6vw,68px);line-height:.98;letter-spacing:-.018em}
+.qs{grid-column:5/13;border-top:1px solid var(--d1)}
 .qs details{border-bottom:1px solid var(--d1)}
-.qs summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:700 clamp(18px,1.6vw,23px)/1.2 var(--head);letter-spacing:-.015em}
+.qs summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;padding:22px 0;font:700 clamp(18px,1.6vw,23px)/1.2 var(--head);letter-spacing:-.015em}
 .qs summary::-webkit-details-marker{display:none}
-.qs summary .tile{width:28px;height:28px;font-size:15px;background:transparent;color:var(--d1);border:1px solid var(--d1)}
-.qs summary .tile i{transition:transform .25s}
-.qs details[open] summary .tile{background:var(--cta);border-color:var(--cta)}
-.qs details[open] summary .tile i{transform:rotate(45deg)}
-.qs .a{padding:0 0 24px;font:300 17px/1.6 var(--body);max-width:600px}
+.qs summary .qn{font:700 13px/1 var(--head);color:var(--d2)}
+.qs summary .tile{width:28px;height:28px;font-size:15px;background:transparent;color:var(--d1);border:1px solid var(--d1);transition:transform .25s}
+.qs details[open] summary .tile{transform:rotate(45deg);background:var(--cta);border-color:var(--cta)}
+.qs .a{padding:0 0 24px 54px;font:300 17px/1.6 var(--body);max-width:640px}
+.qs .a p{margin:0}
 
-/* 8 footer */
-.foot{padding:clamp(48px,6vw,80px) 0 32px;background:var(--t2);border-top:1px solid var(--d1)}
-.foot .made{grid-column:1/8;font:700 clamp(26px,3vw,44px)/1.1 var(--head);letter-spacing:-.035em}
-.foot .made span{display:block;font:400 clamp(17px,1.4vw,20px)/1.4 var(--sub);letter-spacing:0;margin-top:12px;color:var(--d2)}
+/* ---------- 11 footer ---------- */
+.foot{padding:clamp(56px,7vw,100px) 0 32px;background:var(--t2);border-top:1px solid var(--d1)}
+.foot .made{grid-column:1/8;font:700 clamp(28px,3.4vw,50px)/1.05 var(--head);letter-spacing:-.018em;margin:0}
+.foot .made span{display:block;font:400 clamp(17px,1.4vw,20px)/1.4 var(--sub);letter-spacing:0;margin-top:14px;color:var(--d2)}
 .foot .made a{text-decoration:none;border-bottom:2px solid var(--d1)}
 .foot .made a:hover{background:var(--cta)}
 .foot .links{grid-column:9/13;align-self:end;list-style:none;margin:0;padding:0;font:400 16px/1.3 var(--body)}
 .foot .links li{padding:10px 0;border-top:1px solid var(--t1);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .foot .links a{text-decoration:none}
 .foot .links a:hover{text-decoration:underline;text-underline-offset:4px}
-.foot .strip{grid-column:1/-1;margin-top:clamp(48px,6vw,80px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--d1);padding-top:16px;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2)}
+.foot .strip{grid-column:1/-1;margin-top:clamp(56px,7vw,100px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--d1);padding-top:16px;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2)}
+.foot .strip img{height:16px;width:auto}
 
+/* ---------- responsive ---------- */
 @media (max-width:980px){
-  .hero .lede,.menu h2,.plist,.soon,.previews,.ai h2,.ai .tm,.ai .txt,.faq h2,.qs,.foot .made,.foot .links{grid-column:1/-1}
-  .menu h2,.plist,.soon,.previews{grid-row:auto}
-  .previews{margin-top:36px}
+  .hero .spec{grid-column:1/-1;order:3;margin-top:44px}
+  .hero .lede{grid-column:1/-1}
+  .rxform{grid-template-columns:auto 1fr 1fr}
+  .rxform>div:nth-child(2){grid-column:2/4}
+  .rxform>div:nth-child(3){border-left:0;border-top:1px solid var(--d1);grid-column:1/3}
+  .rxform>div:nth-child(4){border-top:1px solid var(--d1)}
+  .rxform>div:first-child{grid-row:1}
+  .plist,.previews{grid-column:1/-1}
+  .previews{position:static;margin-top:36px}
+  .pain .q,.pain .body,.pain .empty{grid-column:1/-1}
+  .pain .body{margin-top:32px}
+  .pain .shape h3,.pain .shape p{grid-column:1/-1}
+  .pain .shape p{margin-top:20px}
+  .ai .clock,.ai .txt{grid-column:1/-1}
   .ai .txt{margin-top:40px}
-  .pcard{grid-column:1/-1}
+  .price h2,.price .side,.pcard{grid-column:1/-1}
+  .pcard{margin-top:40px}
+  .price h2,.price .side,.pcard{grid-row:auto}
+  .faq h2,.qs{grid-column:1/-1}
   .faq h2{margin-bottom:32px}
-  .foot .links{margin-top:36px}
+  .foot .made,.foot .links{grid-column:1/-1}
+  .foot .links{margin-top:40px}
+  .demo .intro h2,.demo .intro p{grid-column:1/-1}
+  .demo .intro p{margin-top:20px}
+  .menu h2,.anat h2,.anat .h2b,.ai h2,.out h2{grid-column:1/-1}
 }
 @media (max-width:760px){
-  :root{--navh:60px}
+  body{font-size:16px}
+  .nav .wrap{height:60px}
   .nav .logo img{height:22px}
-  .hero{min-height:0}
-  .hero h1{grid-column:1/-1;font-size:clamp(40px,11.4vw,64px);letter-spacing:-.04em}
-  .demo .intro{flex-direction:column;align-items:flex-start}
+  .nav ul li.hide-m{display:none}
+  .stage{top:60px;height:calc(100vh - 60px);height:calc(100svh - 60px)}
+  .sh .lab{grid-column:2/-1}
+  .sh .rx{display:none}
+  .hero h1{grid-column:1/-1;font-size:clamp(40px,11.4vw,64px);letter-spacing:-.018em}
+  .rxform{grid-template-columns:1fr 1fr}
+  .rxform>div:first-child{grid-column:1/-1;border-bottom:1px solid var(--d1)}
+  .rxform>div:nth-child(2){grid-column:1/-1;border-left:0;border-bottom:1px solid var(--d1)}
+  .rxform>div:nth-child(3){grid-column:1/2;border-top:0}
+  .rxform>div:nth-child(4){grid-column:2/3;border-top:0}
+  .directions{grid-template-columns:1fr}
+  .directions div.d{border-right:0;border-bottom:1px solid var(--t1);padding-bottom:20px}
   .doses .dl,.doses .tx{grid-column:1/-1}
-  .doses .dl{margin-bottom:10px}
+  .doses .dl{margin-bottom:12px}
   .tbar .tt{padding:12px 14px}
   .tbar .tc{padding:10px 12px;font-size:12px}
+  .stage-head .tc.wc{min-width:0}
+  .stage-head .tc.st{display:none}
+  .rail .rl{display:none}
   .stage-head{flex-direction:column;gap:10px}
   .stage-head .tbar{grid-template-columns:1fr auto;width:100%}
   .stage .hint p{font-size:13px;padding:10px 12px}
+  .cells{grid-template-columns:1fr}
+  .outs{grid-template-columns:1fr;row-gap:36px}
+  .contra{grid-template-columns:1fr;row-gap:28px}
   .pv{padding:16px}
+  .pv .row{grid-template-columns:1fr;gap:6px}
   .steps8{grid-template-columns:repeat(2,1fr)}
+  .pv .two{grid-template-columns:1fr}
   .btn.lg{width:100%;justify-content:center}
+  .qs .a{padding-left:0}
+  .qs summary{grid-template-columns:34px 1fr auto}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -237,36 +381,73 @@ html.js .pv[hidden]{display:none}
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Framely home"><img src="shared/logo.svg" alt="framely" width="106" height="26"></a>
-    <a class="btn sm" href="#buy">Get a template</a>
+    <nav aria-label="Main">
+      <ul>
+        <li class="hide-m"><a href="#templates">Templates</a></li>
+        <li class="hide-m"><a href="#how">How it works</a></li>
+        <li><a class="btn sm" href="#buy">Get a template</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <main id="main">
 
+<!-- 01 HERO -->
 <section class="hero" id="top" aria-labelledby="h1">
   <div class="wrap grid">
+    <div class="rxform" role="group" aria-label="Prescription">
+      <div><span class="rxg" aria-hidden="true">Rx</span></div>
+      <div><span class="meta">For</span><span class="v">The specialist who was just handed the meeting</span></div>
+      <div><span class="meta">Dose</span><span class="v">30 min, max 60</span></div>
+      <div><span class="meta">Take</span><span class="v">Tomorrow, 10:00</span></div>
+    </div>
+
     <h1 id="h1">You've been asked to run a workshop. <span class="l2">Here's the script.</span></h1>
+
+    <div class="spec" aria-label="Framely template header, example">
+      <div class="cap meta"><span>Specimen · template header</span><span>2.3</span></div>
+      <div class="tbar">
+        <div class="tt"><b>Your next workshop</b><span class="field">Add your topic</span></div>
+        <div class="tc"><span><i class="ph ph-clock" aria-hidden="true"></i>30 min</span><span><i class="ph ph-calendar-blank" aria-hidden="true"></i>Tomorrow</span></div>
+      </div>
+    </div>
+
     <div class="lede">
-      <p>Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step.</p>
+      <p>Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step. For in-house designers, researchers, strategists and marketers who were handed the meeting, but not the training.</p>
       <a class="btn lg" href="#buy">Get a template - $4 <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
       <span class="note">Introductory price, then $29.</span>
+      <ul class="micro">
+        <li><i class="ph ph-squares-four" aria-hidden="true"></i>Miro board + Google Doc</li>
+        <li><i class="ph ph-palette" aria-hidden="true"></i>Your company colours</li>
+        <li><i class="ph ph-receipt" aria-hidden="true"></i>Receipt for expense claims</li>
+      </ul>
+    </div>
+
+    <div class="directions" aria-label="Directions">
+      <span class="dh meta">Directions for use</span>
+      <div class="d"><span class="n">i.</span><span class="t">Pick the problem.</span></div>
+      <div class="d"><span class="n">ii.</span><span class="t">Open the template.</span></div>
+      <div class="d"><span class="n">iii.</span><span class="t">Follow the script.</span></div>
     </div>
   </div>
 </section>
 
+<!-- 02 DEMO 40 -> 5 -->
 <section class="demo" id="how" aria-labelledby="h2-demo">
   <div class="wrap grid">
+    <div class="sh"><span class="no">02</span><span class="lab">Template preview · Problem Statement</span><span class="rx meta">From noise to signal</span></div>
     <div class="intro">
       <h2 id="h2-demo">40 → 20 → 10 → 5 words.</h2>
-      <p>This is one of our templates doing its job. Scroll.</p>
+      <p>This is one of our templates doing its job. <b>Scroll.</b></p>
     </div>
     <div class="doses-wrap" style="grid-column:1/-1">
       <ol class="doses" id="doses">
-        <li data-k="mess" data-title="The mess"><span class="dl">The mess</span><p class="tx">Customers are confused during onboarding because they're asked for different types of information at different points in the journey. Some of it feels repeated, some isn't explained, and they're never sure what's required, optional or already done...</p></li>
-        <li data-k="40" data-title="40 words"><span class="dl">40 words</span><p class="tx">Customers trying to complete onboarding do not always understand what information is needed, why it is required, or whether they have already provided it, which creates confusion, repeated effort, and delays in completing the process.</p></li>
-        <li data-k="20" data-title="20 words"><span class="dl">20 words</span><p class="tx">Customers struggle to understand what onboarding information is needed, why it matters, and whether they have already provided it.</p></li>
-        <li data-k="10" data-title="10 words"><span class="dl">10 words</span><p class="tx">Customers cannot clearly track required onboarding information.</p></li>
-        <li data-k="5" data-title="5 words"><span class="dl">5 words</span><p class="tx">Unclear onboarding information requirements.</p></li>
+        <li data-k="mess" data-n="02" data-title="Frame the starting problem" data-label="The mess"><div class="dl"><b>The mess</b><span>No limit</span></div><p class="tx">Customers are confused during onboarding because they're asked for different types of information at different points in the journey. Some of it feels repeated, some isn't explained, and they're never sure what's required, optional or already done...</p></li>
+        <li data-k="40" data-n="03" data-title="Create the 40-word problem statement" data-label="40 words"><div class="dl"><b>40 words</b><span>No more than 40</span></div><p class="tx">Customers trying to complete onboarding do not always understand what information is needed, why it is required, or whether they have already provided it, which creates confusion, repeated effort, and delays in completing the process.</p></li>
+        <li data-k="20" data-n="04" data-title="Reduce to 20 words" data-label="20 words"><div class="dl"><b>20 words</b><span>No more than 20</span></div><p class="tx">Customers struggle to understand what onboarding information is needed, why it matters, and whether they have already provided it.</p></li>
+        <li data-k="10" data-n="05" data-title="Reduce to 10 words" data-label="10 words"><div class="dl"><b>10 words</b><span>No more than 10</span></div><p class="tx">Customers cannot clearly track required onboarding information.</p></li>
+        <li data-k="5" data-n="06" data-title="Reduce to 5 words" data-label="5 words"><div class="dl"><b>5 words</b><span>Name the heart of the problem</span></div><p class="tx">Unclear onboarding information requirements.</p></li>
       </ol>
     </div>
     <div class="after hint"><span class="tile"><i class="ph ph-check-circle" aria-hidden="true"></i></span><p>When we reduce the words, we are not removing complexity. We are revealing what matters most.</p></div>
@@ -276,98 +457,208 @@ html.js .pv[hidden]{display:none}
     <div class="stage miro" id="stage">
       <div class="stage-head wrap">
         <div class="tbar">
-          <div class="tt"><b>Problem Statement</b><span id="stTitle">The mess</span></div>
-          <div class="tc"><span class="cnt"><b id="stCount">0</b><small id="stLimit">words</small></span></div>
+          <div class="tt"><b>Problem Statement</b><span id="stTitle">Frame the starting problem</span></div>
+          <div class="tc st"><span><i class="ph ph-list-numbers"></i>Step <strong id="stN">02</strong>/08</span><span><i class="ph ph-clock"></i>Fits in 60 min</span></div>
+          <div class="tc wc"><span class="cnt"><b id="stCount">0</b><small id="stLimit">words</small></span><small id="stLab">The mess</small></div>
         </div>
         <div class="hint"><span class="tile"><i class="ph ph-check-circle"></i></span><p>When we reduce the words, we are not removing complexity. We are revealing what matters most.</p></div>
       </div>
       <div class="stage-body"><div class="wrap"><div class="words" id="words"></div></div></div>
-      <div class="stage-foot wrap"><div class="rail" id="rail"></div></div>
+      <div class="stage-foot wrap">
+        <div class="rail" id="rail"></div>
+      </div>
+      <div class="scrollcue"><i class="ph ph-arrow-down"></i>Scroll to reduce</div>
     </div>
   </div>
 </section>
 
-<section class="sec menu" id="templates" aria-labelledby="h2-menu">
+<!-- 03 PAIN -->
+<section class="sec pain" aria-labelledby="h2-pain">
   <div class="wrap grid">
-    <div class="rule"></div>
+    <div class="sh"><span class="no">03</span><span class="lab" id="h2-pain">What usually happens</span><span class="rx meta">Symptoms</span></div>
+    <p class="q"><span class="who">Someone says</span>"Can you run a workshop on this?"</p>
+    <div class="body">
+      <p>You open an empty Miro board. Six people you barely know. A vague topic, no agenda, no clear goal.</p>
+      <p>So it becomes a loose chat. People talk too long, and not about the thing. Nobody writes anything down. Then there's a follow-up. And another one.</p>
+    </div>
+    <div class="empty" aria-hidden="true">
+      <div class="field phd"><span>Untitled board</span><span>0 notes</span></div>
+    </div>
+    <div class="shape">
+      <h3>A Framely template gives the hour a shape.</h3>
+      <p>Everyone speaks inside a structure, so they get specific, and you leave with a conclusion instead of another meeting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PROBLEM MENU -->
+<section class="sec menu" id="templates" aria-labelledby="h2-menu" style="padding-top:0">
+  <div class="wrap grid">
+    <div class="sh"><span class="no">04</span><span class="lab">What's going wrong?</span><span class="rx meta">Indications</span></div>
     <h2 id="h2-menu">Start with your problem, not a method.</h2>
     <ul class="plist" id="plist">
-      <li><button type="button" aria-pressed="true" aria-controls="pv-ps"><span class="tile"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span class="pq">"We keep solving the wrong problem."</span><span class="pt">Problem Statement</span></button></li>
-      <li><button type="button" aria-pressed="false" aria-controls="pv-mu"><span class="tile"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span class="pq">"My manager doesn't see half of what I do."</span><span class="pt">Managing Up · for your weekly 1:1</span></button></li>
+      <li><button type="button" aria-pressed="true" aria-controls="pv-ps"><span class="tile"><i class="ph ph-arrow-right"></i></span><span class="pq">"We keep solving the wrong problem."</span><span class="pt">Problem Statement · workshop · 40 → 5 words</span></button></li>
+      <li><button type="button" aria-pressed="false" aria-controls="pv-mu"><span class="tile"><i class="ph ph-arrow-right"></i></span><span class="pq">"My manager doesn't see half of what I do."</span><span class="pt">Managing Up · for your weekly 1:1</span></button></li>
+      <li><button type="button" aria-pressed="false" aria-controls="pv-sp"><span class="tile"><i class="ph ph-arrow-right"></i></span><span class="pq">"Nobody agrees on what happens next."</span><span class="pt">Scenario Planning <em>coming soon</em></span></button></li>
+      <li><button type="button" aria-pressed="false" aria-controls="pv-vp"><span class="tile"><i class="ph ph-arrow-right"></i></span><span class="pq">"We can't say why anyone should care."</span><span class="pt">Value Proposition <em>coming soon</em></span></button></li>
+      <li><button type="button" aria-pressed="false" aria-controls="pv-pp"><span class="tile"><i class="ph ph-arrow-right"></i></span><span class="pq">"Everything is a priority."</span><span class="pt">Portfolio Prioritisation <em>coming soon</em></span></button></li>
     </ul>
-    <p class="soon">Coming soon: Scenario Planning, Value Proposition, Prioritisation.</p>
     <div class="previews" aria-live="polite">
       <article class="pv sheet" id="pv-ps" aria-label="Problem Statement preview">
-        <div class="tbar"><div class="tt"><b>Problem Statement</b><span>Workshop</span></div><div class="tc"><span><i class="ph ph-list-numbers"></i>8 steps</span><span><i class="ph ph-clock"></i>60 min</span></div></div>
+        <div class="tbar"><div class="tt"><b>Problem Statement</b><span>Workshop · 40 → 5 words</span></div><div class="tc"><span><i class="ph ph-list-numbers"></i>8 steps</span><span><i class="ph ph-clock"></i>Fits in 60 min</span></div></div>
         <ol class="steps8">
-          <li>Introduction</li><li>Frame the problem</li><li class="hl">40 words</li><li class="hl">20 words</li><li class="hl">10 words</li><li class="hl">5 words</li><li>Test</li><li>Close</li>
+          <li>Introduction</li><li>Frame the starting problem</li><li class="hl">40 words</li><li class="hl">20 words</li><li class="hl">10 words</li><li class="hl">5 words</li><li>Test</li><li>Close</li>
         </ol>
+        <div class="row" style="margin-top:18px"><span class="k">Facilitator script</span><span>For every step: what to say, what to watch for, how to step in.</span></div>
+        <div class="hint"><span class="tile"><i class="ph ph-check-circle"></i></span><p>The 40-word version should be clear enough that someone outside the workshop could understand it.</p></div>
         <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
       </article>
       <article class="pv sheet" id="pv-mu" aria-label="Managing Up preview">
-        <div class="tbar"><div class="tt"><b>Managing up</b><span>For your weekly 1:1</span></div><div class="tc"><span><i class="ph ph-clock"></i>30 min</span></div></div>
-        <span class="lbl">What do I need from this meeting?</span>
-        <div class="chips"><span class="chip f">Decision</span><span class="chip">Approval</span><span class="chip t">Clarification</span><span class="chip">Support</span><span class="chip o">Guidance</span><span class="chip a">Action</span></div>
-        <p class="sm">Pick two, three at most.</p>
+        <div class="tbar"><div class="tt"><b>Managing up</b><span>Are you setting yourself up for success</span></div><div class="tc"><span><i class="ph ph-users"></i>Weekly 1:1</span></div></div>
+        <div class="row"><span class="k">What do I need from this meeting</span><span><span class="chips"><span class="chip f">Decision</span><span class="chip">Approval</span><span class="chip t">Clarification</span><span class="chip">Support</span><span class="chip o">Guidance</span><span class="chip a">Action</span></span><span style="display:block;margin-top:8px;color:var(--d2)">Pick two, three at most.</span></span></div>
+        <div class="row" style="grid-template-columns:1fr"><span><span class="alabel"><span class="tile"><i class="ph ph-arrow-right"></i></span>What matters most this week?</span><span class="field phd" style="display:block">One thing.</span></span></div>
+        <div class="two">
+          <div><span class="alabel"><span class="tile"><i class="ph ph-arrow-right"></i></span>Projects</span><div class="field phd">Risks, input, questions</div></div>
+          <div><span class="alabel"><span class="tile"><i class="ph ph-arrow-right"></i></span>Stakeholders</span><div class="field phd">Issues, asks, wins</div></div>
+        </div>
+        <div class="row" style="margin-top:16px"><span class="k">Plus</span><span>A self-check quiz, "Sentences you need" (scripts for the awkward moments), a filled-in example.</span></div>
         <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
+      </article>
+      <article class="pv sheet soon" id="pv-sp" aria-label="Scenario Planning, coming soon">
+        <div class="tbar mid"><div class="tt"><b>Scenario Planning</b><span>"Nobody agrees on what happens next."</span></div></div>
+        <span class="stamp">Coming soon</span>
+        <div class="field phd" style="min-height:120px">In preparation.</div>
+        <div class="tfoot"><span>Framely template</span><span>2026</span></div>
+      </article>
+      <article class="pv sheet soon" id="pv-vp" aria-label="Value Proposition, coming soon">
+        <div class="tbar mid"><div class="tt"><b>Value Proposition</b><span>"We can't say why anyone should care."</span></div></div>
+        <span class="stamp">Coming soon</span>
+        <div class="field phd" style="min-height:120px">In preparation.</div>
+        <div class="tfoot"><span>Framely template</span><span>2026</span></div>
+      </article>
+      <article class="pv sheet soon" id="pv-pp" aria-label="Portfolio Prioritisation, coming soon">
+        <div class="tbar mid"><div class="tt"><b>Portfolio Prioritisation</b><span>"Everything is a priority."</span></div></div>
+        <span class="stamp">Coming soon</span>
+        <div class="field phd" style="min-height:120px">In preparation.</div>
+        <div class="tfoot"><span>Framely template</span><span>2026</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sec ai on-dark" aria-labelledby="h2-ai">
+<!-- 05 ANATOMY -->
+<section class="sec anat" aria-labelledby="h2-anat" style="padding-top:0">
   <div class="wrap grid">
-    <h2 id="h2-ai">AI can write an agenda. It has never been in the room.</h2>
-    <p class="tm" aria-hidden="true">10:05</p>
-    <p class="txt">Ask a chatbot for a workshop and you get a generic sheet that looks fine until 10:05, when the first person jumps to a solution.</p>
+    <div class="sh"><span class="no">05</span><span class="lab">Template anatomy</span><span class="rx meta">Composition</span></div>
+    <h2 id="h2-anat">It's not a worksheet. It's a script.</h2>
+    <p class="h2b">Every template tells you what to say.</p>
+    <div class="board miro">
+      <div class="cells">
+        <div class="cell c1"><div class="ch"><span class="tile blue"><i class="ph ph-target"></i></span><b>Facilitator goal</b><span class="no">a</span></div><div class="cb"><p class="say" style="font-size:clamp(17px,1.4vw,20px)">Help the group create one shared, reasonably complete problem statement.</p></div></div>
+        <div class="cell c2"><div class="ch"><span class="tile"><i class="ph ph-chat-text"></i></span><b>What you say</b><span class="no">b</span></div><div class="cb"><p class="say">"I would rather we start with something slightly messy than pretend we already have the perfect framing."</p></div></div>
+        <div class="cell c3"><div class="ch"><span class="tile lt"><i class="ph ph-eye"></i></span><b>What to watch for</b><span class="no">c</span></div><div class="cb"><ul>
+          <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>People describing solutions instead of problems.</li>
+          <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Vague language like "improve the journey".</li>
+          <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Several problems mixed together.</li></ul></div></div>
+        <div class="cell c4"><div class="ch"><span class="tile"><i class="ph ph-lifebuoy"></i></span><b>When it goes sideways</b><span class="no">d</span></div><div class="cb"><ul>
+          <li><span class="tile blue"><i class="ph ph-arrow-right"></i></span><span><span class="if">Someone jumps to a solution?</span>"Let's park that as a possible solution. What problem would that solution solve?"</span></li></ul></div></div>
+      </div>
+      <div class="tfoot"><span>Problem Statement</span><span>Framely template v1.0</span><span>2026</span></div>
+    </div>
   </div>
 </section>
 
-<section class="sec price" id="buy" aria-label="Price">
+<!-- 06 WHY NOT AI (dark) -->
+<section class="sec ai on-dark" aria-labelledby="h2-ai">
   <div class="wrap grid">
+    <div class="sh"><span class="no">06</span><span class="lab">Why not just ask a chatbot?</span><span class="rx meta">Interactions</span></div>
+    <h2 id="h2-ai">AI can write an agenda. It has never been in the room.</h2>
+    <div class="clock" aria-hidden="true"><span class="meta">The first person jumps to a solution at</span><span class="tm">10:05</span></div>
+    <div class="txt">
+      <p>Ask a chatbot for a workshop and you get a generic sheet that looks fine until 10:05, when the first person jumps to a solution.</p>
+      <p>Framely templates come from someone who runs these meetings inside a large organisation: the awkward silences, the stakeholder who derails, the boss who wants it "high-level". <strong>That know-how is the product.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 OUTCOME -->
+<section class="sec out" aria-labelledby="h2-out">
+  <div class="wrap grid">
+    <div class="sh"><span class="no">07</span><span class="lab">After the meeting</span><span class="rx meta">Expected effect</span></div>
+    <h2 id="h2-out">Walk out as the person who made it move.</h2>
+    <ul class="outs">
+      <li><span class="tile blue"><i class="ph ph-check"></i></span><p>The meeting had a goal, and you reached it.</p></li>
+      <li><span class="tile blue"><i class="ph ph-check"></i></span><p>Decisions are written down, not remembered differently by six people.</p></li>
+      <li><span class="tile blue"><i class="ph ph-check"></i></span><p>People leave knowing what happens next, and who's doing it.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 WHO IT'S NOT FOR (dark) -->
+<section class="sec notfor on-dark" aria-labelledby="h2-not">
+  <div class="wrap grid">
+    <div class="sh"><span class="no">08</span><span class="lab" id="h2-not">Who it's not for</span><span class="rx meta">Contraindications</span></div>
+    <ul class="contra">
+      <li><span class="tile"><i class="ph ph-x"></i></span><span><b>Not for managers or founders</b>They usually set the agenda.</span></li>
+      <li><span class="tile"><i class="ph ph-x"></i></span><span><b>Not for professional facilitators</b>You already have your own toolkit.</span></li>
+    </ul>
+    <p class="for"><span class="lb">Indicated</span>For the specialist who was just handed the meeting.</p>
+  </div>
+</section>
+
+<!-- 09 PRICE -->
+<section class="sec price" id="buy" aria-labelledby="h2-price">
+  <div class="wrap grid">
+    <div class="sh"><span class="no">09</span><span class="lab">Price</span><span class="rx meta">One template</span></div>
+    <h2 id="h2-price">One template.</h2>
+    <p class="side">Introductory price $4 until <span class="pending">[date]</span>. After that, $29.</p>
     <div class="pcard sheet">
-      <div class="tbar"><div class="tt"><b>One template</b><span>Miro + Google Doc</span></div></div>
-      <div class="amt"><span class="big">$4</span><span class="was">introductory price<br>then $29 from <span class="pending">[date]</span> · VAT <span class="pending">[pending]</span></span></div>
+      <div class="tbar"><div class="tt"><b>One template</b><span>Miro + Google Docs</span></div><div class="tc"><span><i class="ph ph-tag"></i>Introductory</span><span><i class="ph ph-calendar-blank"></i>until <span class="pending" style="margin-right:0">[date]</span></span></div></div>
+      <div class="amt"><span class="big">$4</span><span class="was">introductory price<br>regular <s>$29</s> from <span class="pending">[date]</span><br>VAT: <span class="pending">[pending]</span></span></div>
       <ul>
-        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span>Miro board + Google Doc</li>
-        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span>Facilitator script, worked example, timings</li>
-        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span>Receipt for expense claims · 14-day refund <span class="pending">[to confirm]</span></span></li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Miro board + Google Doc version</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Facilitator script, worked example, timings</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Easy to switch to your company colours</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span>Link straight after purchase · receipt for expense claims</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right"></i></span><span>Not useful? Email us within 14 days for a refund. <span class="pending">[refund: to confirm]</span></span></li>
       </ul>
-      <div class="buy"><a class="btn lg" href="#buy">Get the template <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="buy">
+        <a class="btn lg" href="#buy">Get the template <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        <small>Introductory price $4 until <span class="pending">[date]</span>. After that, $29.</small>
+      </div>
       <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
     </div>
   </div>
 </section>
 
-<section class="sec forwho" aria-label="Who it's for" style="padding-top:0">
-  <div class="wrap grid">
-    <div class="rule"></div>
-    <p class="line">For the specialist who was just handed the meeting.</p>
-    <p class="not">Not for managers, founders or pro facilitators.</p>
-  </div>
-</section>
-
+<!-- 10 FAQ -->
 <section class="sec faq" aria-labelledby="h2-faq" style="padding-top:0">
   <div class="wrap grid">
-    <div class="rule"></div>
-    <h2 id="h2-faq">Questions</h2>
+    <div class="sh"><span class="no">10</span><span class="lab">Questions</span><span class="rx meta">Patient information</span></div>
+    <h2 id="h2-faq">Before you take it.</h2>
     <div class="qs">
-      <details open><summary>I've never facilitated before. Is that OK?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">That's exactly who it's for. The script tells you what to say at each step.</p></details>
-      <details><summary>Can I use my company colours?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">Yes, in Miro and Google Docs. Fully branded team versions are coming.</p></details>
-      <details><summary>How long is each meeting?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">Designed for 30 minutes, never more than 60.</p></details>
+      <details><summary><span class="qn">10.1</span>Do I need a paid Miro account?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p><span class="pending">[answer pending]</span></p></div></details>
+      <details><summary><span class="qn">10.2</span>Can I put my company's branding on it?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p>Yes, you can switch to your company colours in Miro and Google Docs. Fully branded team versions are coming.</p></div></details>
+      <details open><summary><span class="qn">10.3</span>I've never facilitated before. Is that OK?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p>That's exactly who it's for. The script tells you what to say at each step.</p></div></details>
+      <details><summary><span class="qn">10.4</span>Can my company pay?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p>You get a receipt you can submit with an expense claim.</p></div></details>
+      <details><summary><span class="qn">10.5</span>How long is each meeting?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p>Designed for 30 minutes, never more than 60.</p></div></details>
+      <details><summary><span class="qn">10.6</span>What's next?<span class="tile"><i class="ph ph-plus"></i></span></summary><div class="a"><p>More templates, a Framely GPT to help you prepare, then team packs and training.</p></div></details>
     </div>
   </div>
 </section>
 </main>
 
+<!-- 11 FOOTER -->
 <footer class="foot">
   <div class="wrap grid">
+    <div class="sh" style="margin-bottom:clamp(32px,4vw,56px)"><span class="no">11</span><span class="lab">Prepared by</span><span class="rx meta">Signature</span></div>
     <p class="made">Made by Karolina, <span>service designer, in-house → <a href="https://karolina.cc">karolina.cc</a></span></p>
     <ul class="links">
       <li><a href="mailto:hello@meetframely.com">hello@meetframely.com</a><span class="pending">[to confirm]</span></li>
       <li><a href="#terms">Terms</a><a href="#privacy">Privacy</a></li>
+      <li><span>© 2026 Framely</span></li>
     </ul>
-    <div class="strip"><span>Framely template v1.0</span><span>© 2026 Framely</span></div>
+    <div class="strip"><img src="shared/logo.svg" alt="" width="65" height="16"><span>Framely template v1.0</span><span>2026</span><span>© Framely</span></div>
   </div>
 </footer>
 
@@ -376,6 +667,7 @@ html.js .pv[hidden]{display:none}
   var root=document.documentElement;
   root.classList.add('js');
 
+  /* ---- problem menu ---- */
   var btns=[].slice.call(document.querySelectorAll('#plist button'));
   function pick(b){
     btns.forEach(function(x){
@@ -386,39 +678,44 @@ html.js .pv[hidden]{display:none}
   btns.forEach(function(b){b.addEventListener('click',function(){pick(b);if(innerWidth<980){var p=document.getElementById(b.getAttribute('aria-controls'));p&&p.scrollIntoView({block:'nearest',behavior:'smooth'})}})});
   if(btns.length) pick(btns[0]);
 
+  /* ---- reduction stage ---- */
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduce || !('animate' in Element.prototype)) return;
   root.classList.add('live');
 
-  var steps=[].slice.call(document.querySelectorAll('#doses li')).map(function(li){
-    return {k:li.dataset.k,title:li.dataset.title,words:li.querySelector('.tx').textContent.trim().split(/\s+/)};
+  var items=[].slice.call(document.querySelectorAll('#doses li'));
+  var steps=items.map(function(li){
+    var t=li.querySelector('.tx').textContent.trim();
+    return {k:li.dataset.k,n:li.dataset.n,title:li.dataset.title,label:li.dataset.label,words:t.split(/\s+/)};
   });
-  var FR=[0.5,0.6,0.66,0.76,0.92], LH=[1.5,1.12,1.04,1,.92], MAXF=[30,400,400,400,400];
+  var FR=[0.5,0.6,0.66,0.76,0.92];      /* share of stage height each step may fill */
+  var LH=[1.5,1.12,1.04,1,.92];
+  var MAXF=[30,400,400,400,400];
   var track=document.getElementById('track'),stage=document.getElementById('stage');
   var box=document.getElementById('words'),body=stage.querySelector('.stage-body');
-  var stT=document.getElementById('stTitle'),stC=document.getElementById('stCount'),stL=document.getElementById('stLimit');
+  var stN=document.getElementById('stN'),stT=document.getElementById('stTitle'),stC=document.getElementById('stCount'),stL=document.getElementById('stLimit'),stLab=document.getElementById('stLab');
   var rail=document.getElementById('rail');
   var key=function(w){return w.toLowerCase().replace(/[^a-z0-9']/g,'')};
 
   steps.forEach(function(s,i){
-    var b=document.createElement('button');b.type='button';b.tabIndex=-1;
-    b.textContent=s.k==='mess'?'Mess':s.k;
+    var b=document.createElement('button');b.type='button';
+    b.innerHTML='<span class="rn">'+(s.k==='mess'?'Mess':s.k)+'</span><span class="rl">'+s.title+'</span>';
     b.addEventListener('click',function(){goTo(i)});
     rail.appendChild(b);
   });
   var rb=[].slice.call(rail.children);
 
   var meas=document.createElement('div');
-  meas.setAttribute('aria-hidden','true');
+  meas.className='words';meas.setAttribute('aria-hidden','true');
   meas.style.cssText='position:absolute;left:-9999px;top:0;visibility:hidden';
   document.body.appendChild(meas);
 
   function cls(i){return 'words '+(i===0?'mess':'big')}
-  function ls(i){return i===0?'0':(i>2?'-.045em':'-.03em')}
   function html(i){return steps[i].words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')}
   function fit(i){
     var W=box.clientWidth||body.clientWidth, H=body.clientHeight*FR[i];
-    meas.className=cls(i);meas.style.width=W+'px';meas.style.lineHeight=LH[i];meas.style.letterSpacing=ls(i);
+    meas.className=cls(i);meas.style.width=W+'px';meas.style.lineHeight=LH[i];
+    meas.style.letterSpacing=i===0?'0':(i>2?'-.045em':'-.03em');
     meas.innerHTML=html(i);
     var lo=10,hi=MAXF[i];
     for(var k=0;k<18;k++){
@@ -429,12 +726,13 @@ html.js .pv[hidden]{display:none}
   }
   function paint(i){
     box.className=cls(i);
-    box.style.fontSize=fit(i)+'px';box.style.lineHeight=LH[i];box.style.letterSpacing=ls(i);
+    box.style.fontSize=fit(i)+'px';box.style.lineHeight=LH[i];
+    box.style.letterSpacing=i===0?'0':(i>2?'-.045em':'-.03em');
     box.innerHTML=html(i);
     var s=steps[i];
-    stT.textContent=s.title;
+    stN.textContent=s.n;stT.textContent=s.title;stLab.textContent=s.label;
     stC.textContent=s.words.length;
-    stL.textContent=s.k==='mess'?'words':'words, max '+s.k;
+    stL.textContent=s.k==='mess'?'words':'/ '+s.k+' max';
     rb.forEach(function(b,j){b.classList.toggle('on',j===i);b.classList.toggle('done',j<i)});
     stage.classList.toggle('final',i===steps.length-1);
   }
@@ -447,12 +745,14 @@ html.js .pv[hidden]{display:none}
     busy=true;
     var olds=[].slice.call(box.children);
     var nextKeys=steps[to].words.map(key), used={}, oldKeys=olds.map(function(s){return key(s.textContent)});
+    /* match new words to old words, in order */
     var map=nextKeys.map(function(k){
       for(var j=0;j<oldKeys.length;j++){ if(!used[j] && oldKeys[j]===k){used[j]=1;return j} }
       return -1;
     });
     var cut=olds.filter(function(_,j){return !used[j]});
     cut.forEach(function(s){s.classList.add('cut')});
+    olds.forEach(function(s,j){if(used[j]) s.classList.add('kept')});
     setTimeout(function(){
       var rects=olds.map(function(s){return s.getBoundingClientRect()});
       paint(to);
@@ -473,13 +773,18 @@ html.js .pv[hidden]{display:none}
         }
       });
       cur=to;
-      Promise.all(anims).then(function(){busy=false; if(want!==cur) morph(want);});
+      Promise.all(anims).then(function(){
+        busy=false; if(want!==cur) morph(want);
+      });
     },cut.length?700:0);
   }
 
   function range(){return track.offsetHeight-stage.offsetHeight}
   function onScroll(){
-    var p=Math.min(1,Math.max(0,-track.getBoundingClientRect().top/range()));
+    var r=track.getBoundingClientRect();
+    var p=Math.min(1,Math.max(0,(stage.offsetTop - 0 + (-r.top))/range()));
+    p=Math.min(1,Math.max(0,-r.top/range()));
+    stage.classList.toggle('moved',p>0.02);
     var i=Math.min(steps.length-1,Math.floor(p*steps.length*0.999+0.0001));
     if(i!==want){want=i; if(!busy) morph(want);}
   }
