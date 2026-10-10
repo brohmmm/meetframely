@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Framely · Meeting templates with the words to say</title>
+<meta name="description" content="Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step. For the specialist who was just handed the meeting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Geomanist Bold pending license: Outfit 600/700 is a TEMPORARY stand-in for Geomanist Bold. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+@font-face{font-family:"Geomanist";src:url("shared/geomanist-regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+:root{
+  --d1:#320f05;--d2:#593e2e;--l1:#a6978a;--l2:#f5efe6;--cta:#c1d4da;
+  --t1:#dbd5d0;--t2:#f9f7f3;--t3:#e6eef0;--w:#ffffff;
+  /* Geomanist Bold pending license: "Geomanist Bold" resolves only when licensed/installed, otherwise Outfit 700 renders the bold. */
+  --head:"Geomanist Bold","Outfit",sans-serif;
+  --sub:"Geomanist","Noto Sans",sans-serif;
+  --body:"Noto Sans",system-ui,sans-serif;
+  --pad:clamp(20px,4vw,56px);
+  --gap:clamp(12px,1.6vw,24px);
+  --navh:68px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--l2);color:var(--d1);font:300 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--d1);outline-offset:3px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.04em;margin:0}
+h2{font-size:clamp(36px,5.2vw,80px);line-height:.98}
+p{margin:0}
+.pending{display:inline-block;font:500 .78em/1.2 var(--body);color:var(--d2);border:1px dashed var(--d2);padding:.1em .45em;margin:0 .15em;vertical-align:.08em;white-space:nowrap}
+.on-dark .pending{color:var(--t1);border-color:var(--l1)}
+.sec{padding:clamp(96px,13vw,200px) 0}
+.rule{grid-column:1/-1;border-top:1px solid currentColor;margin-bottom:clamp(40px,6vw,88px)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:var(--l2);border-bottom:1px solid var(--d1)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--navh)}
+.nav .logo img{height:26px;width:auto}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:600 16px/1 "Outfit",var(--body);text-decoration:none;background:var(--cta);color:var(--d1);border:1px solid var(--d1);padding:15px 22px;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--d1)}
+.btn.sm{padding:10px 14px;font-size:14px}
+.btn.lg{padding:20px 28px;font-size:18px}
+
+/* template components */
+.tbar{display:grid;grid-template-columns:1fr auto;border:1px solid var(--d1);background:var(--l2);color:var(--d1)}
+.tbar .tt{padding:16px 20px;min-width:0}
+.tbar .tt b{display:block;font:700 clamp(18px,1.6vw,22px)/1.15 var(--head);letter-spacing:-.01em}
+.tbar .tt span{display:block;font:400 clamp(14px,1.2vw,16px)/1.35 var(--sub);margin-top:4px}
+.tbar .tc{border-left:1px solid var(--d1);background:var(--w);padding:12px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;font:400 13px/1 var(--body);white-space:nowrap}
+.tbar .tc i{display:inline-grid;place-items:center;width:20px;height:20px;background:var(--l1);color:var(--d1);font-size:13px;margin-right:8px;vertical-align:middle}
+.tile{display:inline-grid;place-items:center;width:30px;height:30px;flex:none;background:var(--d2);color:var(--l2);font-size:17px}
+.tile.ol{background:transparent;color:var(--d1);border:1px solid var(--d1)}
+.hint{display:flex;gap:14px;align-items:flex-start}
+.hint .tile{background:var(--cta);color:var(--d1);width:34px;height:34px;font-size:20px}
+.hint p{background:var(--cta);padding:12px 16px;font:400 15px/1.45 var(--body);color:var(--d1)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;font:400 13px/1 var(--sub);padding:6px 10px;border:1px solid var(--d1)}
+.chip.f{background:var(--d1);color:var(--l2)}
+.chip.t{background:var(--t1);border-color:var(--t1)}
+.chip.o{border-color:var(--l1);color:var(--d2)}
+.chip.a{background:var(--cta);border-color:var(--cta)}
+.tfoot{display:flex;justify-content:space-between;gap:12px;font:500 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2);padding-top:12px;border-top:1px solid var(--t1)}
+.sheet{background:var(--w);border:1px solid var(--d1);box-shadow:10px 10px 0 var(--t1)}
+.miro{background-color:var(--t2);background-image:linear-gradient(var(--t1) 1px,transparent 1px),linear-gradient(90deg,var(--t1) 1px,transparent 1px);background-size:32px 32px}
+
+/* 1 hero */
+.hero{min-height:calc(100svh - var(--navh));display:flex;align-items:center;padding:clamp(56px,8vw,120px) 0}
+.hero .grid{width:100%}
+.hero h1{grid-column:1/12;font-size:clamp(46px,8.1vw,128px);line-height:.94;letter-spacing:-.045em}
+.hero h1 .l2{display:block;color:var(--d2)}
+.hero .lede{grid-column:7/13;margin-top:clamp(48px,6vw,88px);padding-top:20px;border-top:1px solid var(--d1)}
+.hero .lede p{font:300 clamp(18px,1.55vw,22px)/1.5 var(--body);margin-bottom:28px}
+.hero .note{display:block;margin-top:14px;font:400 14px/1.4 var(--body);color:var(--d2)}
+
+/* 2 reduction */
+.demo{padding-top:clamp(40px,6vw,80px)}
+.demo .intro{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+.demo .intro p{font:400 clamp(17px,1.4vw,20px)/1.45 var(--sub);max-width:340px}
+.doses{list-style:none;margin:0;padding:0;border-top:1px solid var(--d1)}
+.doses li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding:28px 0;border-bottom:1px solid var(--t1)}
+.doses .dl{grid-column:1/3;font:700 15px/1.2 var(--head)}
+.doses .tx{grid-column:3/13}
+.doses li[data-k="mess"] .tx{font:300 18px/1.55 var(--body);color:var(--d2)}
+.doses li[data-k="40"] .tx{font:700 clamp(22px,2.2vw,30px)/1.15 var(--head);letter-spacing:-.02em}
+.doses li[data-k="20"] .tx{font:700 clamp(28px,3.2vw,46px)/1.05 var(--head);letter-spacing:-.03em}
+.doses li[data-k="10"] .tx{font:700 clamp(34px,4.6vw,68px)/1 var(--head);letter-spacing:-.035em}
+.doses li[data-k="5"] .tx{font:700 clamp(40px,7vw,108px)/.95 var(--head);letter-spacing:-.045em}
+.demo .after{grid-column:1/-1;margin-top:40px}
+.track{display:none}
+html.live .doses-wrap{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+html.live .track{display:block;height:520vh;position:relative}
+html.live .demo .after{display:none}
+.stage{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));height:calc(100svh - var(--navh));display:flex;flex-direction:column;border-top:1px solid var(--d1);border-bottom:1px solid var(--d1)}
+.stage>.wrap{width:100%}
+.stage-head{padding-top:18px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.stage-head .tbar{grid-template-columns:auto auto}
+.stage-head .tc{min-width:150px}
+.stage-head .tc .cnt{display:flex;align-items:baseline;gap:4px}
+.stage-head .tc b{font:700 22px/1 var(--head);letter-spacing:-.02em}
+.stage-head .tc small{font:400 12px/1 var(--body);color:var(--d2)}
+.stage-body{flex:1;min-height:0}
+.stage-body .wrap{height:100%;display:flex;align-items:center}
+.words{width:100%;color:var(--d1);hyphens:none;overflow-wrap:normal;word-break:normal}
+.words .w{display:inline-block;position:relative;will-change:transform}
+.words.mess{font-family:var(--body);font-weight:300;color:var(--d2)}
+.words.big{font-family:var(--head);font-weight:700}
+.words .w::after{content:"";position:absolute;left:-.04em;right:-.04em;top:56%;height:max(2px,.07em);background:var(--d1);transform:scaleX(0);transform-origin:left center;transition:transform .32s cubic-bezier(.6,0,.2,1)}
+.words .w.cut{color:var(--l1);transition:color .25s ease,opacity .2s ease .5s;opacity:0}
+.words .w.cut::after{transform:scaleX(1)}
+.stage-foot{padding-bottom:18px}
+.rail{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--d1)}
+.rail button{all:unset;cursor:pointer;padding:12px 12px 0 0;position:relative;color:var(--l1);font:700 clamp(18px,2vw,28px)/1 var(--head);letter-spacing:-.02em;transition:color .3s}
+.rail button::before{content:"";position:absolute;top:-1px;left:0;right:8px;height:3px;background:var(--d1);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+.rail button.on,.rail button.done{color:var(--d1)}
+.rail button.on::before,.rail button.done::before{transform:scaleX(1)}
+.stage .hint{max-width:500px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.stage.final .hint{opacity:1;transform:none}
+
+/* 3 templates */
+.menu h2{grid-column:1/9;grid-row:2;margin-bottom:clamp(40px,5vw,72px)}
+.plist{grid-column:1/6;grid-row:3;list-style:none;margin:0;padding:0;border-top:1px solid var(--d1);align-self:start}
+.plist li{border-bottom:1px solid var(--d1)}
+.plist button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;padding:22px 12px 22px 0;transition:background .2s,padding .2s}
+.plist .tile{grid-row:1/3;margin-top:2px;background:transparent;color:var(--d1);border:1px solid var(--d1)}
+.plist .pq{font:700 clamp(19px,1.7vw,25px)/1.2 var(--head);letter-spacing:-.015em}
+.plist .pt{font:400 14px/1.3 var(--body);color:var(--d2)}
+.plist button:hover{background:var(--t2)}
+.plist button[aria-pressed="true"]{background:var(--d1);color:var(--l2);padding-left:14px}
+.plist button[aria-pressed="true"] .pt{color:var(--t1)}
+.plist button[aria-pressed="true"] .tile{background:var(--cta);border-color:var(--cta);color:var(--d1)}
+.plist button:focus-visible{outline:2px solid var(--d1);outline-offset:2px}
+.soon{grid-column:1/6;grid-row:4;margin-top:22px;font:400 14px/1.5 var(--body);color:var(--d2)}
+.previews{grid-column:7/13;grid-row:3/6;align-self:start}
+.pv{padding:22px}
+.pv+.pv{margin-top:32px}
+html.js .pv[hidden]{display:none}
+.pv .tbar{margin-bottom:20px}
+.steps8{list-style:none;margin:0 0 20px;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.steps8 li{counter-increment:s;border:1px solid var(--d1);padding:8px;font:400 12px/1.25 var(--body);min-height:56px;display:flex;flex-direction:column;gap:4px}
+.steps8 li::before{content:"0" counter(s);font:700 12px/1 var(--head)}
+.steps8 li.hl{background:var(--d1);color:var(--l2)}
+.pv .lbl{font:700 14px/1.3 var(--head);margin-bottom:10px;display:block}
+.pv .chips{margin-bottom:10px}
+.pv .sm{font:400 14px/1.4 var(--body);color:var(--d2);margin-bottom:20px}
+
+/* 4 why not AI */
+.ai h2{grid-column:1/10;font-size:clamp(40px,6.4vw,100px);line-height:.95;letter-spacing:-.045em;color:var(--l2)}
+.ai .tm{grid-column:1/7;margin-top:clamp(56px,7vw,110px);font:700 clamp(96px,15vw,230px)/.85 var(--head);letter-spacing:-.06em;color:var(--cta)}
+.ai .txt{grid-column:8/13;align-self:end;margin-top:clamp(56px,7vw,110px);padding-top:18px;border-top:1px solid var(--l1);font:300 clamp(18px,1.45vw,21px)/1.6 var(--body);color:var(--l2)}
+.on-dark{background:var(--d1);color:var(--l2)}
+
+/* 5 price */
+.pcard{grid-column:4/10}
+.pcard .tbar{border:0;border-bottom:1px solid var(--d1)}
+.pcard .amt{padding:32px 24px 12px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.pcard .big{font:700 clamp(104px,12vw,180px)/.8 var(--head);letter-spacing:-.06em}
+.pcard .was{font:400 15px/1.5 var(--body);padding-bottom:6px}
+.pcard ul{list-style:none;margin:20px 24px 0;padding:0}
+.pcard li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--t1);font:400 15px/1.45 var(--body)}
+.pcard li .tile{width:22px;height:22px;font-size:13px;margin-top:1px}
+.pcard .buy{padding:24px}
+.pcard .buy .btn{width:100%;justify-content:center}
+.pcard .tfoot{margin:0 24px;padding-bottom:16px}
+
+/* 6 for */
+.forwho .line{grid-column:1/-1;font:700 clamp(40px,7vw,112px)/.94 var(--head);letter-spacing:-.05em}
+.forwho .not{grid-column:1/-1;margin-top:28px;font:400 clamp(18px,1.6vw,22px)/1.4 var(--sub);color:var(--d2)}
+
+/* 7 faq */
+.faq h2{grid-column:1/5}
+.qs{grid-column:6/13;border-top:1px solid var(--d1)}
+.qs details{border-bottom:1px solid var(--d1)}
+.qs summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:700 clamp(18px,1.6vw,23px)/1.2 var(--head);letter-spacing:-.015em}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary .tile{width:28px;height:28px;font-size:15px;background:transparent;color:var(--d1);border:1px solid var(--d1)}
+.qs summary .tile i{transition:transform .25s}
+.qs details[open] summary .tile{background:var(--cta);border-color:var(--cta)}
+.qs details[open] summary .tile i{transform:rotate(45deg)}
+.qs .a{padding:0 0 24px;font:300 17px/1.6 var(--body);max-width:600px}
+
+/* 8 footer */
+.foot{padding:clamp(48px,6vw,80px) 0 32px;background:var(--t2);border-top:1px solid var(--d1)}
+.foot .made{grid-column:1/8;font:700 clamp(26px,3vw,44px)/1.1 var(--head);letter-spacing:-.035em}
+.foot .made span{display:block;font:400 clamp(17px,1.4vw,20px)/1.4 var(--sub);letter-spacing:0;margin-top:12px;color:var(--d2)}
+.foot .made a{text-decoration:none;border-bottom:2px solid var(--d1)}
+.foot .made a:hover{background:var(--cta)}
+.foot .links{grid-column:9/13;align-self:end;list-style:none;margin:0;padding:0;font:400 16px/1.3 var(--body)}
+.foot .links li{padding:10px 0;border-top:1px solid var(--t1);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.foot .links a{text-decoration:none}
+.foot .links a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot .strip{grid-column:1/-1;margin-top:clamp(48px,6vw,80px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--d1);padding-top:16px;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--d2)}
+
+@media (max-width:980px){
+  .hero .lede,.menu h2,.plist,.soon,.previews,.ai h2,.ai .tm,.ai .txt,.faq h2,.qs,.foot .made,.foot .links{grid-column:1/-1}
+  .menu h2,.plist,.soon,.previews{grid-row:auto}
+  .previews{margin-top:36px}
+  .ai .txt{margin-top:40px}
+  .pcard{grid-column:1/-1}
+  .faq h2{margin-bottom:32px}
+  .foot .links{margin-top:36px}
+}
+@media (max-width:760px){
+  :root{--navh:60px}
+  .nav .logo img{height:22px}
+  .hero{min-height:0}
+  .hero h1{grid-column:1/-1;font-size:clamp(40px,11.4vw,64px);letter-spacing:-.04em}
+  .demo .intro{flex-direction:column;align-items:flex-start}
+  .doses .dl,.doses .tx{grid-column:1/-1}
+  .doses .dl{margin-bottom:10px}
+  .tbar .tt{padding:12px 14px}
+  .tbar .tc{padding:10px 12px;font-size:12px}
+  .stage-head{flex-direction:column;gap:10px}
+  .stage-head .tbar{grid-template-columns:1fr auto;width:100%}
+  .stage .hint p{font-size:13px;padding:10px 12px}
+  .pv{padding:16px}
+  .steps8{grid-template-columns:repeat(2,1fr)}
+  .btn.lg{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<a class="sr" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Framely home"><img src="shared/logo.svg" alt="framely" width="106" height="26"></a>
+    <a class="btn sm" href="#buy">Get a template</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="wrap grid">
+    <h1 id="h1">You've been asked to run a workshop. <span class="l2">Here's the script.</span></h1>
+    <div class="lede">
+      <p>Ready-to-run meeting templates for Miro and Google Docs, with the words to say at every step.</p>
+      <a class="btn lg" href="#buy">Get a template - $4 <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+      <span class="note">Introductory price, then $29.</span>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="how" aria-labelledby="h2-demo">
+  <div class="wrap grid">
+    <div class="intro">
+      <h2 id="h2-demo">40 → 20 → 10 → 5 words.</h2>
+      <p>This is one of our templates doing its job. Scroll.</p>
+    </div>
+    <div class="doses-wrap" style="grid-column:1/-1">
+      <ol class="doses" id="doses">
+        <li data-k="mess" data-title="The mess"><span class="dl">The mess</span><p class="tx">Customers are confused during onboarding because they're asked for different types of information at different points in the journey. Some of it feels repeated, some isn't explained, and they're never sure what's required, optional or already done...</p></li>
+        <li data-k="40" data-title="40 words"><span class="dl">40 words</span><p class="tx">Customers trying to complete onboarding do not always understand what information is needed, why it is required, or whether they have already provided it, which creates confusion, repeated effort, and delays in completing the process.</p></li>
+        <li data-k="20" data-title="20 words"><span class="dl">20 words</span><p class="tx">Customers struggle to understand what onboarding information is needed, why it matters, and whether they have already provided it.</p></li>
+        <li data-k="10" data-title="10 words"><span class="dl">10 words</span><p class="tx">Customers cannot clearly track required onboarding information.</p></li>
+        <li data-k="5" data-title="5 words"><span class="dl">5 words</span><p class="tx">Unclear onboarding information requirements.</p></li>
+      </ol>
+    </div>
+    <div class="after hint"><span class="tile"><i class="ph ph-check-circle" aria-hidden="true"></i></span><p>When we reduce the words, we are not removing complexity. We are revealing what matters most.</p></div>
+  </div>
+
+  <div class="track" id="track" aria-hidden="true">
+    <div class="stage miro" id="stage">
+      <div class="stage-head wrap">
+        <div class="tbar">
+          <div class="tt"><b>Problem Statement</b><span id="stTitle">The mess</span></div>
+          <div class="tc"><span class="cnt"><b id="stCount">0</b><small id="stLimit">words</small></span></div>
+        </div>
+        <div class="hint"><span class="tile"><i class="ph ph-check-circle"></i></span><p>When we reduce the words, we are not removing complexity. We are revealing what matters most.</p></div>
+      </div>
+      <div class="stage-body"><div class="wrap"><div class="words" id="words"></div></div></div>
+      <div class="stage-foot wrap"><div class="rail" id="rail"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec menu" id="templates" aria-labelledby="h2-menu">
+  <div class="wrap grid">
+    <div class="rule"></div>
+    <h2 id="h2-menu">Start with your problem, not a method.</h2>
+    <ul class="plist" id="plist">
+      <li><button type="button" aria-pressed="true" aria-controls="pv-ps"><span class="tile"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span class="pq">"We keep solving the wrong problem."</span><span class="pt">Problem Statement</span></button></li>
+      <li><button type="button" aria-pressed="false" aria-controls="pv-mu"><span class="tile"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span class="pq">"My manager doesn't see half of what I do."</span><span class="pt">Managing Up · for your weekly 1:1</span></button></li>
+    </ul>
+    <p class="soon">Coming soon: Scenario Planning, Value Proposition, Prioritisation.</p>
+    <div class="previews" aria-live="polite">
+      <article class="pv sheet" id="pv-ps" aria-label="Problem Statement preview">
+        <div class="tbar"><div class="tt"><b>Problem Statement</b><span>Workshop</span></div><div class="tc"><span><i class="ph ph-list-numbers"></i>8 steps</span><span><i class="ph ph-clock"></i>60 min</span></div></div>
+        <ol class="steps8">
+          <li>Introduction</li><li>Frame the problem</li><li class="hl">40 words</li><li class="hl">20 words</li><li class="hl">10 words</li><li class="hl">5 words</li><li>Test</li><li>Close</li>
+        </ol>
+        <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
+      </article>
+      <article class="pv sheet" id="pv-mu" aria-label="Managing Up preview">
+        <div class="tbar"><div class="tt"><b>Managing up</b><span>For your weekly 1:1</span></div><div class="tc"><span><i class="ph ph-clock"></i>30 min</span></div></div>
+        <span class="lbl">What do I need from this meeting?</span>
+        <div class="chips"><span class="chip f">Decision</span><span class="chip">Approval</span><span class="chip t">Clarification</span><span class="chip">Support</span><span class="chip o">Guidance</span><span class="chip a">Action</span></div>
+        <p class="sm">Pick two, three at most.</p>
+        <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec ai on-dark" aria-labelledby="h2-ai">
+  <div class="wrap grid">
+    <h2 id="h2-ai">AI can write an agenda. It has never been in the room.</h2>
+    <p class="tm" aria-hidden="true">10:05</p>
+    <p class="txt">Ask a chatbot for a workshop and you get a generic sheet that looks fine until 10:05, when the first person jumps to a solution.</p>
+  </div>
+</section>
+
+<section class="sec price" id="buy" aria-label="Price">
+  <div class="wrap grid">
+    <div class="pcard sheet">
+      <div class="tbar"><div class="tt"><b>One template</b><span>Miro + Google Doc</span></div></div>
+      <div class="amt"><span class="big">$4</span><span class="was">introductory price<br>then $29 from <span class="pending">[date]</span> · VAT <span class="pending">[pending]</span></span></div>
+      <ul>
+        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span>Miro board + Google Doc</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span>Facilitator script, worked example, timings</li>
+        <li><span class="tile ol"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span>Receipt for expense claims · 14-day refund <span class="pending">[to confirm]</span></span></li>
+      </ul>
+      <div class="buy"><a class="btn lg" href="#buy">Get the template <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="tfoot"><span>Framely template v1.0</span><span>2026</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec forwho" aria-label="Who it's for" style="padding-top:0">
+  <div class="wrap grid">
+    <div class="rule"></div>
+    <p class="line">For the specialist who was just handed the meeting.</p>
+    <p class="not">Not for managers, founders or pro facilitators.</p>
+  </div>
+</section>
+
+<section class="sec faq" aria-labelledby="h2-faq" style="padding-top:0">
+  <div class="wrap grid">
+    <div class="rule"></div>
+    <h2 id="h2-faq">Questions</h2>
+    <div class="qs">
+      <details open><summary>I've never facilitated before. Is that OK?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">That's exactly who it's for. The script tells you what to say at each step.</p></details>
+      <details><summary>Can I use my company colours?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">Yes, in Miro and Google Docs. Fully branded team versions are coming.</p></details>
+      <details><summary>How long is each meeting?<span class="tile"><i class="ph ph-plus" aria-hidden="true"></i></span></summary><p class="a">Designed for 30 minutes, never more than 60.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap grid">
+    <p class="made">Made by Karolina, <span>service designer, in-house → <a href="https://karolina.cc">karolina.cc</a></span></p>
+    <ul class="links">
+      <li><a href="mailto:hello@meetframely.com">hello@meetframely.com</a><span class="pending">[to confirm]</span></li>
+      <li><a href="#terms">Terms</a><a href="#privacy">Privacy</a></li>
+    </ul>
+    <div class="strip"><span>Framely template v1.0</span><span>© 2026 Framely</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  root.classList.add('js');
+
+  var btns=[].slice.call(document.querySelectorAll('#plist button'));
+  function pick(b){
+    btns.forEach(function(x){
+      var on=x===b; x.setAttribute('aria-pressed',on?'true':'false');
+      var p=document.getElementById(x.getAttribute('aria-controls')); if(p) p.hidden=!on;
+    });
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){pick(b);if(innerWidth<980){var p=document.getElementById(b.getAttribute('aria-controls'));p&&p.scrollIntoView({block:'nearest',behavior:'smooth'})}})});
+  if(btns.length) pick(btns[0]);
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('animate' in Element.prototype)) return;
+  root.classList.add('live');
+
+  var steps=[].slice.call(document.querySelectorAll('#doses li')).map(function(li){
+    return {k:li.dataset.k,title:li.dataset.title,words:li.querySelector('.tx').textContent.trim().split(/\s+/)};
+  });
+  var FR=[0.5,0.6,0.66,0.76,0.92], LH=[1.5,1.12,1.04,1,.92], MAXF=[30,400,400,400,400];
+  var track=document.getElementById('track'),stage=document.getElementById('stage');
+  var box=document.getElementById('words'),body=stage.querySelector('.stage-body');
+  var stT=document.getElementById('stTitle'),stC=document.getElementById('stCount'),stL=document.getElementById('stLimit');
+  var rail=document.getElementById('rail');
+  var key=function(w){return w.toLowerCase().replace(/[^a-z0-9']/g,'')};
+
+  steps.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.tabIndex=-1;
+    b.textContent=s.k==='mess'?'Mess':s.k;
+    b.addEventListener('click',function(){goTo(i)});
+    rail.appendChild(b);
+  });
+  var rb=[].slice.call(rail.children);
+
+  var meas=document.createElement('div');
+  meas.setAttribute('aria-hidden','true');
+  meas.style.cssText='position:absolute;left:-9999px;top:0;visibility:hidden';
+  document.body.appendChild(meas);
+
+  function cls(i){return 'words '+(i===0?'mess':'big')}
+  function ls(i){return i===0?'0':(i>2?'-.045em':'-.03em')}
+  function html(i){return steps[i].words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')}
+  function fit(i){
+    var W=box.clientWidth||body.clientWidth, H=body.clientHeight*FR[i];
+    meas.className=cls(i);meas.style.width=W+'px';meas.style.lineHeight=LH[i];meas.style.letterSpacing=ls(i);
+    meas.innerHTML=html(i);
+    var lo=10,hi=MAXF[i];
+    for(var k=0;k<18;k++){
+      var m=(lo+hi)/2; meas.style.fontSize=m+'px';
+      if(meas.scrollHeight<=H && meas.scrollWidth<=W+1) lo=m; else hi=m;
+    }
+    return Math.floor(lo);
+  }
+  function paint(i){
+    box.className=cls(i);
+    box.style.fontSize=fit(i)+'px';box.style.lineHeight=LH[i];box.style.letterSpacing=ls(i);
+    box.innerHTML=html(i);
+    var s=steps[i];
+    stT.textContent=s.title;
+    stC.textContent=s.words.length;
+    stL.textContent=s.k==='mess'?'words':'words, max '+s.k;
+    rb.forEach(function(b,j){b.classList.toggle('on',j===i);b.classList.toggle('done',j<i)});
+    stage.classList.toggle('final',i===steps.length-1);
+  }
+
+  var cur=0,busy=false,want=0;
+  paint(0);
+
+  function morph(to){
+    if(to===cur){busy=false;return}
+    busy=true;
+    var olds=[].slice.call(box.children);
+    var nextKeys=steps[to].words.map(key), used={}, oldKeys=olds.map(function(s){return key(s.textContent)});
+    var map=nextKeys.map(function(k){
+      for(var j=0;j<oldKeys.length;j++){ if(!used[j] && oldKeys[j]===k){used[j]=1;return j} }
+      return -1;
+    });
+    var cut=olds.filter(function(_,j){return !used[j]});
+    cut.forEach(function(s){s.classList.add('cut')});
+    setTimeout(function(){
+      var rects=olds.map(function(s){return s.getBoundingClientRect()});
+      paint(to);
+      var news=[].slice.call(box.children);
+      var nr=news.map(function(s){return s.getBoundingClientRect()});
+      var anims=[];
+      news.forEach(function(s,i){
+        var j=map[i];
+        if(j>=0){
+          var a=rects[j],b=nr[i],sc=a.height/b.height;
+          anims.push(s.animate([
+            {transform:'translate('+(a.left-b.left)+'px,'+(a.top-b.top)+'px) scale('+sc+')',transformOrigin:'0 0'},
+            {transform:'none',transformOrigin:'0 0'}
+          ],{duration:820,delay:i*14,easing:'cubic-bezier(.2,.75,.1,1)',fill:'backwards'}).finished);
+        }else{
+          anims.push(s.animate([{opacity:0,transform:'translateY(.25em)'},{opacity:1,transform:'none'}],
+            {duration:520,delay:380+i*22,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'}).finished);
+        }
+      });
+      cur=to;
+      Promise.all(anims).then(function(){busy=false; if(want!==cur) morph(want);});
+    },cut.length?700:0);
+  }
+
+  function range(){return track.offsetHeight-stage.offsetHeight}
+  function onScroll(){
+    var p=Math.min(1,Math.max(0,-track.getBoundingClientRect().top/range()));
+    var i=Math.min(steps.length-1,Math.floor(p*steps.length*0.999+0.0001));
+    if(i!==want){want=i; if(!busy) morph(want);}
+  }
+  function goTo(i){
+    var top=track.getBoundingClientRect().top+window.scrollY;
+    window.scrollTo({top:top+range()*(i+0.5)/steps.length,behavior:'smooth'});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(!busy)paint(cur)},120)});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){if(!busy)paint(cur)});
+  onScroll();
+})();
+</script>
+</body>
+</html>
